@@ -73,7 +73,7 @@ server.delete("/users/:id", (req, res) => {
 server.put(`/users/:id`, (req, res) => {
     const { id } = req.params;
     const { name, bio } = req.body;
-    if (!name && !bio) {
+    if (!name || !bio) {
         return res.status(400).json({error: "your gunna need the name and bio here."});
     }
     db.update(id, {name, bio})
